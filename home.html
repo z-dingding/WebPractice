@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="img/20201208031107293_easyicon_net_96.ico" type="image/x-icon">
+    <title>每日一练</title> 
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <div id="box">
+     <img id="box_img" src="" alt="">
+    </div>
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+     <script>
+       $(function(){
+         //自执行函数，执行背景图片的获取
+         var baseUrl = "http://localhost:8070";
+         (function(){
+             $.get(baseUrl+"/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN",null,function(result){
+                 console.log(result);
+                 let imgUrl = "https://cn.bing.com"+result.images[0].url
+                  //用attr失效，需要用css来设置
+                  $("#box").css("background-image","url("+imgUrl+")" )
+       
+             });
+         })();
+       })
+        
+     </script>
+</body>
+</html>
