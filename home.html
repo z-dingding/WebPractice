@@ -1,35 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="img/20201208031107293_easyicon_net_96.ico" type="image/x-icon">
-    <title>每日一练</title> 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/home.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="img/20201208031107293_easyicon_net_96.ico" type="image/x-icon">
+  <title>每日一练</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
+
 <body>
-    <div id="box">
-     <img id="box_img" src="" alt="">
+  <div id="box">
+    <!-- 背景图片 -->
+    <img id="box_img" src="" alt="">
+    <!-- 顶部导航栏 -->
+    <div id="nav_top">
+      <a href="#" onclick="location.reload()" target="self">
+        <span id="webname">每日一练</span>
+      </a>
+      <div id="tab" class="fr">
+        <ul>
+          <li>音乐排行</li>
+          <li>每日视频</li>
+          <li>今日诗词</li>
+          <li>天气预报</li>
+          <li>每日一句</li>
+        </ul>
+      </div>
+    </div>
+    <!-- 中部内容区域 -->
+    <div id="center_content">
+      <span id="bgimg_title"></span>
+      <button id="bgimg_load">下载图片</button>
     </div>
 
-    <script src="js/jquery-1.12.4.min.js"></script>
-     <script>
-       $(function(){
-         //自执行函数，执行背景图片的获取
-         var baseUrl = "http://localhost:8070";
-         (function(){
-             $.get(baseUrl+"/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN",null,function(result){
-                 console.log(result);
-                 let imgUrl = "https://cn.bing.com"+result.images[0].url
-                  //用attr失效，需要用css来设置
-                  $("#box").css("background-image","url("+imgUrl+")" )
-       
-             });
-         })();
-       })
-        
-     </script>
+  </div>
+
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script>
+    $(function () {
+      //自执行函数，执行背景图片的获取
+      var baseUrl = "http://localhost:8070";
+      (function () {
+        $.get(baseUrl + "/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN", null, function (result) {
+          console.log(result);
+          let imgUrl = "https://cn.bing.com" + result.images[0].url
+          let centerTitle = result.images[0].copyright
+          //用attr失效，需要用css来设置
+          $("#box").css("background-image", "url(" + imgUrl + ")")
+          //展示背景图片的标题
+          $("#bgimg_title").text(centerTitle);
+          //下载按钮
+          $("#bgimg_load").hover(function () {
+            $(this).css("background-color", "#ccc");
+          }, function () {
+            $(this).css("background-color", "transparent");
+          })
+          //点击下载按钮
+          $("#bgimg_load").click(function () {
+            var url = "https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751278230,2622866844&fm=111&gp=0.jpg";
+            //window.open("https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751278230,2622866844&fm=111&gp=0.jpg");
+
+            // var a = document.createElement('a');
+            // var event = new MouseEvent('click');
+            // a.download = "test.jpg"; //下载图片名称  test
+            // a.href = url;
+            // //执行下载
+            // a.dispatchEvent(event);
+          })
+
+        });
+      })();
+    })
+
+
+  </script>
 </body>
+
 </html>

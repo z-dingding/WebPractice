@@ -6,3 +6,98 @@
     position: absolute;
      /* background-image: url("../img/th.jpg"); */
 }
+
+
+#nav_top{
+    
+    padding: 0 50px;
+    height: 80px;
+    width: 1200px;
+    margin: 0 auto;
+  
+}
+
+
+#nav_top a{
+    text-decoration: none;
+}
+
+#nav_top  #webname{
+   font-size: 20px;
+   font-weight: bold;
+   color: white;
+   line-height: 80px;
+   letter-spacing: 5px;
+}
+
+#nav_top #tab{
+    display: inline-block;
+    right: 0;
+}
+
+#nav_top #tab li{
+    float: left;
+    color: white;
+    font: normal  14px/80px white;
+    margin: 10px;
+    cursor: pointer;
+}
+
+
+/* 中间部分内容样式 */
+#center_content{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+#center_content #bgimg_title{
+    width: 1200px;
+    letter-spacing: 16px;
+    font-size: 46px;
+    color: white;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    /* translate() 函数中使用百分比值时，是以这个元素自身的宽度和高度为基准进行换算和移动的（动态计算宽高） */
+    transform: translate(-50%, -50%);
+   
+}
+
+#center_content button{
+    color: #333;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    /* translate() 函数中使用百分比值时，是以这个元素自身的宽度和高度为基准进行换算和移动的（动态计算宽高） */
+    transform: translate(-50%, -50%);
+    padding: 8px;
+    width: 120px;
+    border-radius: 15px;
+    border: white 0.5px solid;
+    background-color: transparent;
+    outline: none;
+    letter-spacing: 5px;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
