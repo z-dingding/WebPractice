@@ -35,10 +35,21 @@
       <span id="bgimg_title"></span>
       <button id="bgimg_load">下载图片</button>
     </div>
+    <!-- 今日诗词 -->
+    <div id="todayPoetry">
+      <img id="todayPoetry_titlt" src="img/today_poetry.png"></img>
+      <span id="todayPoetry_content" style="font-size: 40px; color: black;">1231321321313</span>
+      <ul id="todayPoetry_tag">
+      </ul>
+      <button id="todayPoetry_change">换一句</button>
 
+    </div>
   </div>
 
   <script src="js/jquery-1.12.4.min.js"></script>
+  <!-- 引入今日诗词的sdk -->
+  <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
   <script>
     $(function () {
       //自执行函数，执行背景图片的获取
@@ -61,17 +72,40 @@
           //点击下载按钮
           $("#bgimg_load").click(function () {
             var url = "https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751278230,2622866844&fm=111&gp=0.jpg";
-            //window.open("https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=751278230,2622866844&fm=111&gp=0.jpg");
-
-            // var a = document.createElement('a');
-            // var event = new MouseEvent('click');
-            // a.download = "test.jpg"; //下载图片名称  test
-            // a.href = url;
-            // //执行下载
-            // a.dispatchEvent(event);
           })
 
         });
+        // 今日诗词
+        jinrishici.load(function (result) {
+          console.log(result)
+          $("#todayPoetry_content").text(result.data.content)
+          for (var i = 0; i < result.data.matchTags.length; i++) {
+            $("#todayPoetry_tag").append("<li ><span>" + result.data.matchTags[i] + "</span></li>");
+          }
+          //在追加一个作者和朝代
+           $("#todayPoetry_tag").append("<li ><span>" + result.data.origin.dynasty + "</span></li>");
+            $("#todayPoetry_tag").append("<li ><span>" + result.data.origin.author + "</span></li>");
+        });
+        //点击切换
+        $("#todayPoetry_change").click(function () {
+          jinrishici.load(function (data) {
+            $("#todayPoetry_content").text(data.data.content);
+            $("#todayPoetry_tag").html("");
+            for (var i = 0; i < data.data.matchTags.length; i++) {
+            $("#todayPoetry_tag").append("<li ><span>" + data.data.matchTags[i] + "</span></li>");
+          }
+          //在追加一个作者和朝代
+           $("#todayPoetry_tag").append("<li ><span>" + data.data.origin.dynasty + "</span></li>");
+            $("#todayPoetry_tag").append("<li ><span>" + data.data.origin.author + "</span></li>");
+          });
+        })
+
+
+
+
+
+
+
       })();
     })
 

@@ -84,8 +84,68 @@
 
 
 
+/* 今日诗词部分样式 */
+#todayPoetry  {
+    height: 250px;
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+} 
 
+#todayPoetry #todayPoetry_titlt{
+    width: 100px;
+    height: 26px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
+#todayPoetry #todayPoetry_content{
+    display: inline-block;
+     margin-top: 76px;
+
+}
+
+#todayPoetry #todayPoetry_tag{
+    height: 40px;
+    width: 350px;
+    margin: 0 auto;
+
+}
+
+#todayPoetry #todayPoetry_tag li{
+     margin: 10px;
+     float: left;
+     margin-top: 10px;
+     margin-right: 10px;
+     
+}
+
+#todayPoetry #todayPoetry_tag li span{
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid green;
+  color: green;
+  border-radius: 8px;
+}
+
+#todayPoetry #todayPoetry_change{
+    display: block;
+    width: 180px;
+    height: 40px;
+    border: 1px solid green;
+    color: green;
+    border-radius: 20px;
+    margin-top: 40px;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 
